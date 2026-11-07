@@ -1,0 +1,22 @@
+node_modules/
+.env
+*/renders/
+*/snapshots/
+examples/*/renders/
+examples/*/snapshots/
+examples/*/*/renders/
+examples/*/*/snapshots/
+.hyperframes/
+*.wav
+*.mp3
+*.mp4
+_references/
+.DS_Store
+# Keep the sound effects bundled with HeyGen's media-use skill (Pixabay Content License,
+# see .claude/skills/media-use/audio/assets/sfx/CREDITS.md): the audio mix of the method
+# uses them, and the third-party copy must stay complete.
+!.claude/skills/media-use/audio/assets/sfx/*.mp3
+# The example films are part of the repository.
+!examples/*.mp4
+!examples/*/*.mp4
+!examples/*/*/*.mp4
