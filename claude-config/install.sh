@@ -9,6 +9,7 @@ cp -r "$SRC"/skills/. "$DEST/skills/"
 cp -r "$SRC"/commands/. "$DEST/commands/"
 cp -r "$SRC"/agents/. "$DEST/agents/"
 cp -r "$SRC"/scripts/. "$DEST/scripts/"
+mkdir -p "$DEST/ponytail-hooks" && cp -r "$SRC"/ponytail-hooks/. "$DEST/ponytail-hooks/"
 # Merge the hooks into ~/.claude/settings.json without touching other settings
 node -e '
 const fs=require("fs");const [f,h]=process.argv.slice(1);
