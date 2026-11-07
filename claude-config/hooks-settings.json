@@ -1,26 +1,119 @@
 {
   "hooks": {
     "PreToolUse": [
-      { "matcher": "Bash|Write", "hooks": [{ "type": "command", "command": "node \"$HOME/.claude/scripts/hooks/tool-checks.js\" pre", "timeout": 10 }] },
-      { "matcher": "Edit|Write", "hooks": [{ "type": "command", "command": "node \"$HOME/.claude/scripts/hooks/suggest-compact.js\"", "timeout": 10 }] }
+      {
+        "matcher": "Bash|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/scripts/hooks/tool-checks.js\" pre",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/scripts/hooks/suggest-compact.js\"",
+            "timeout": 10
+          }
+        ]
+      }
     ],
     "PostToolUse": [
-      { "matcher": "Edit", "hooks": [{ "type": "command", "command": "node \"$HOME/.claude/scripts/hooks/tool-checks.js\" post", "timeout": 90 }] }
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/scripts/hooks/tool-checks.js\" post",
+            "timeout": 90
+          }
+        ]
+      }
     ],
     "PreCompact": [
-      { "hooks": [{ "type": "command", "command": "node \"$HOME/.claude/scripts/hooks/pre-compact.js\"", "timeout": 10 }] }
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/scripts/hooks/pre-compact.js\"",
+            "timeout": 10
+          }
+        ]
+      }
     ],
     "SessionStart": [
-      { "hooks": [{ "type": "command", "command": "node \"$HOME/.claude/scripts/hooks/session-start.js\"", "timeout": 15 }] }
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/scripts/hooks/session-start.js\"",
+            "timeout": 15
+          }
+        ]
+      },
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/ponytail-hooks/ponytail-activate.js\"",
+            "timeout": 15
+          }
+        ]
+      }
     ],
     "Stop": [
-      { "hooks": [{ "type": "command", "command": "node \"$HOME/.claude/scripts/hooks/tool-checks.js\" stop", "timeout": 15 }] }
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/scripts/hooks/tool-checks.js\" stop",
+            "timeout": 15
+          }
+        ]
+      }
     ],
     "SessionEnd": [
-      { "hooks": [
-        { "type": "command", "command": "node \"$HOME/.claude/scripts/hooks/session-end.js\"", "timeout": 10 },
-        { "type": "command", "command": "node \"$HOME/.claude/scripts/hooks/evaluate-session.js\"", "timeout": 10 }
-      ] }
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/scripts/hooks/session-end.js\"",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/scripts/hooks/evaluate-session.js\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/ponytail-hooks/ponytail-subagent.js\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/ponytail-hooks/ponytail-mode-tracker.js\"",
+            "timeout": 15
+          }
+        ]
+      }
     ]
   }
 }
